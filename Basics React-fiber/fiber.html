@@ -1,0 +1,135 @@
+<!-- very important -->
+<!-- source material  -->
+<!-- https://github.com/acdlite/react-fiber-architecture -->
+
+
+React Fiber is an ongoing reimplementation of React's core algorithm. It is the culmination of over two years of research by the React team.
+
+The goal of React Fiber is to increase its suitability for areas like animation, layout, and gestures. Its headline feature is incremental rendering: the ability to split rendering work into chunks and spread it out over multiple frames.
+
+Other key features include the ability to pause, abort, or reuse work as new updates come in; the ability to assign priority to different types of updates; and new concurrency primitives.
+
+reconciliation
+The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+
+Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM." A high-level description goes something like this: when you render a React application, a tree of nodes that describes the app is generated and saved in memory. This tree is then flushed to the rendering environment — for example, in the case of a browser application, it's translated to a set of DOM operations. When the app is updated (usually via setState), a new tree is generated. The new tree is diffed with the previous tree to compute which operations are needed to update the rendered app.
+
+Different component types are assumed to generate substantially different trees. React will not attempt to diff them, but rather replace the old tree completely.
+
+Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
+
+he key points are:
+
+In a UI, it's not necessary for every update to be applied immediately; in fact, doing so can be wasteful, causing frames to drop and degrading the user experience.
+Different types of updates have different priorities — an animation update needs to complete more quickly than, say, an update from a data store.
+A push-based approach requires the app (you, the programmer) to decide how to schedule work. A pull-based approach allows the framework (React) to be smart and make those decisions for you.
+React doesn't currently take advantage of scheduling in a significant way; an update results in the entire subtree being re-rendered immediately
+
+
+<!-- what does render mean -->
+
+In the context of React, "render" refers to the process of generating a React element tree and displaying it on the screen. When you build a React application, you create components that represent different parts of your user interface. These components are composed together to form a hierarchy.
+
+When the application runs, React goes through a process called "rendering" to convert these components into actual DOM elements that can be displayed in the browser. This process involves:
+
+1. **Creating React elements**: React elements are JavaScript objects that represent the structure and properties of UI components. They are lightweight representations of what should appear on the screen.
+
+2. **Rendering the component tree**: React traverses the component hierarchy, starting from the root component, and generates a React element for each component. This process is called "reconciliation."
+
+3. **Updating the DOM**: Once React has generated the React elements, it compares them with the previously rendered elements (if any) and computes the minimal set of changes needed to update the actual DOM. This process is known as "diffing" or "reconciliation." React then applies these changes to the DOM efficiently.
+
+4. **Displaying the UI**: Finally, the updated DOM is displayed in the browser, reflecting the changes made by the React components.
+
+The rendering process can be triggered by various events, such as changes in component state or props, or by external factors like user interaction. React takes care of efficiently updating only the parts of the UI that have changed, resulting in better performance and a smoother user experience.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
